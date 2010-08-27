@@ -1,5 +1,5 @@
 Name: qttas-server
-Version: 0.8.4
+Version: 0.9.0
 Release:1%{?dist}
 Summary: Qt Test Automation Server
 Group: Development/Tools
@@ -8,8 +8,8 @@ URL: https://code.nokia.com/
 Source0: %{name}-%{version}.tar.gz
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
-BuildRequires: qt-devel libXtst-devel
-Requires: qt
+BuildRequires: qt-devel libXtst-devel libqtwebkit-devel libX11-devel libXext-devel libXi-devel
+Requires: qt 
 
 
 %description
@@ -22,15 +22,14 @@ verify and control them.
 
 %build
 # TODO add CONFIG+=maemo
-qmake -r 
+qmake -r CONFIG+=RPM
 make %{?_smp_mflags}
 
 
 %install
 rm -rf %{buildroot}
 make install INSTALL_ROOT=%{buildroot}
-# For some reason rpmlint doesn't like this file?
-rm -rv %{buildroot}/usr/lib/libqttestability.so
+
 
 
 %clean
@@ -44,9 +43,12 @@ rm -rf %{buildroot}
 %files
 %defattr(-,root,root,-)
 %{_bindir}/qttas*
-%{_sysconfdir}/init/*
 %{_sysconfdir}/qt_testability/*
+<<<<<<< HEAD
 %{_sysconfdir}/X11/*
+=======
+%{_sysconfdir}/xdg/autostart/qttasserver.desktop
+>>>>>>> 1f69006... qttas spec changes
 
 
 
@@ -78,6 +80,14 @@ Qt TAS development header.
 %files devel
 %defattr(-,root,root,-)
 %{_includedir}/*
+<<<<<<< HEAD
+=======
+/usr/share/qt4/mkspecs/features/*
+%doc /usr/share/doc/qttas-dev/examples/hellotraverse/HOWTO
+%doc /usr/share/doc/qttas-dev/examples/hellotraverse/*
+
+
+>>>>>>> 1f69006... qttas spec changes
 
 
 
@@ -93,5 +103,14 @@ Qt Test Automation Server plugins
 
 
 %changelog
+<<<<<<< HEAD
+=======
+* Mon Aug 16 2010 - ext-tatu.lahtela@nokia.com - 0.9.1
+- Test
+
+* Mon Aug 16 2010 - ext-tatu.lahtela@nokia.com - 0.9.0.3
+- RPM Package for release
+
+>>>>>>> 1f69006... qttas spec changes
 * Thu Jun 17 2010 - ext-tatu.lahtela@nokia.com - 0.8.4
 - Testing RPM Packaging
