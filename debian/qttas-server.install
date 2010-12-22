@@ -1,5 +1,0 @@
-usr/bin/qttasserver
-usr/bin/qttas_ui
-usr/lib/libqttestability.*
-etc/init/test/qttasserver.conf
-etc/qt_testability/*
