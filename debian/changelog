@@ -1,3 +1,9 @@
+qttas (1.0.4-4) unstable; urgency=low
+
+  * Fixes: NB226640 - MTBF test execution fails because of "Broken pipe"
+	
+ -- Testability Driver Team <testabilitydriver@nokia.com>  Fri, 18 Feb 2011 12:00:00 +0200
+
 qttas (1.0.4-3) unstable; urgency=low
 
   * Fixes: NB#227508 - meego-im-uiserver crashes when running TDriver scripts
