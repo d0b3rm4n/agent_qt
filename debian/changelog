@@ -1,7 +1,9 @@
 qttas (1.1.0-1) unstable; urgency=low
 
   * new release version
-  * Fixes: NB#204237 - Signals fixture is off-by-one regarding the signal parameters 
+  * Fixes: NB#228169 - execute_shell_command fails if command contains & character
+  * Fixes: NB#204237 - Signals fixture is off-by-one regarding the signal parameters
+  * Fixes: NB#228279 - ovi store client does not register to qttas
 
  -- Testability Driver Team <testabilitydriver@nokia.com>  Thu, 15 Feb 2011 12:01:00 +0200
 
