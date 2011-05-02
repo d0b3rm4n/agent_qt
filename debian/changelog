@@ -1,6 +1,6 @@
 qttas (1.1.1-3) unstable; urgency=low
 
-  * Fixes: NB#251357 - qttas-server fails to start successfully with confined upstart job (
+  * Fixes: NB#251357 - qttas-server fails to start successfully with confined upstart job 
 
  -- Testability Driver Team <testabilitydriver@nokia.com>  Mon, 2 May 2011 08:11:00 +0300
 
