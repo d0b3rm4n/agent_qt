@@ -25,6 +25,7 @@
 #include <QDeclarativeItem>
 #ifdef QML_ID
 #include <QDeclarativeContext>
+extern QString qt_qmlIdForObject(QDeclarativeContext *context, QObject *obj);
 #endif
 #endif
 
@@ -69,6 +70,7 @@ void TasTraverseUtils::clearFilter()
 void TasTraverseUtils::addObjectDetails(TasObject* objectInfo, QObject* object)
 {
     objectInfo->setId(TasCoreUtils::objectId(object));
+    QString objectName = object->objectName();
 
     //custom traversers may want to add their own types
     if(objectInfo->getType().isEmpty()){
@@ -84,7 +86,9 @@ void TasTraverseUtils::addObjectDetails(TasObject* objectInfo, QObject* object)
 #ifdef QML_ID
             QDeclarativeContext *context = qmlContext(object);
             if (context) {
-                objectInfo->addAttribute("QML_ID", context->getStringId(object));
+                objectInfo->addAttribute("QML_ID", qt_qmlIdForObject(context, object));
+                if (objectName.isEmpty())
+                    objectName = qt_qmlIdForObject(context, object);
             }
 #endif
         }
@@ -94,8 +98,8 @@ void TasTraverseUtils::addObjectDetails(TasObject* objectInfo, QObject* object)
     if(includeAttribute("parent")){
         objectInfo->setParentId(getParentId(object));        
     }
-    printProperties(objectInfo, object);      
-    objectInfo->setName(object->objectName());
+    printProperties(objectInfo, object);
+    objectInfo->setName(objectName);
 
     //allows to detect vkb
     if(TasCoreUtils::getApplicationName().contains(PENINPUT_SERVER)){
